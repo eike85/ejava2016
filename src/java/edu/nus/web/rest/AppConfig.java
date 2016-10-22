@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.nus.web.rest;
+package edu.nus.web.rest;
 
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
@@ -26,8 +26,8 @@ public class AppConfig extends Application {
      * given list with all resources defined in the project.
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(org.nus.web.rest.resource.AppointmentResource.class);
-        resources.add(org.nus.web.rest.resource.PeopleResource.class);
+        resources.add(edu.nus.web.rest.resource.AppointmentResource.class);
+        resources.add(edu.nus.web.rest.resource.PeopleResource.class);
     }
     
 }

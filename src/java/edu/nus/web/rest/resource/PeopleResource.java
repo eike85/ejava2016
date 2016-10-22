@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.nus.web.rest.resource;
+package edu.nus.web.rest.resource;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
