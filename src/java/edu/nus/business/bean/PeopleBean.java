@@ -5,6 +5,7 @@
 package edu.nus.business.bean;
 
 import edu.nus.web.rest.entity.People;
+import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -29,6 +30,10 @@ public class PeopleBean {
     }
     
     public void save(People people) {
+        
+        String uuid = UUID.randomUUID().toString().substring(0,8);
+        people.setPeopleId(uuid);
+        
         EntityManager em = emf.createEntityManager();
         em.persist(people);
         em.close();

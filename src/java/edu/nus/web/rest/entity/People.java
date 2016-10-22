@@ -16,53 +16,45 @@ import javax.persistence.NamedQuery;
  *
  * @author NayLA
  */
-
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "People.findAll", query = "SELECT p FROM People p")
-        , @NamedQuery(name = "People.findByPeopleId", query = "SELECT p FROM People p WHERE p.pid = :pid")
-	, @NamedQuery(name = "People.findByName", query = "SELECT p FROM People p WHERE p.name = :name")
-        , @NamedQuery(name = "People.findByEmail", query = "SELECT p FROM People p WHERE p.email = :email")})
-public class People implements Serializable{
-    
+    @NamedQuery(name = "People.findAll", query = "SELECT p FROM People p"),
+    @NamedQuery(name = "People.findByPeopleId", query = "SELECT p FROM People p WHERE p.pid = :pid"),
+    @NamedQuery(name = "People.findByName", query = "SELECT p FROM People p WHERE p.name = :name"),
+    @NamedQuery(name = "People.findByEmail", query = "SELECT p FROM People p WHERE p.email = :email")})
+public class People implements Serializable {
+
     private static final long serializableUID = 1L;
-    
     @Id
-    private Integer pid;
-    
-    @Basic private String name;
+    private String pid;
+    @Basic
+    private String name;
     private String email;
-    
-    public People(){
-        
-        
-    }
-    
-    public People(Integer pid) {
-	this.pid = pid;
+
+    public People() {
     }
 
-    public Integer getPeopleId() {
-            return pid;
+    public String getPeopleId() {
+        return pid;
     }
 
-    public void setPeopleId(Integer pid) {
-            this.pid = pid;
+    public void setPeopleId(String pid) {
+        this.pid = pid;
     }
 
     public String getName() {
-            return name;
+        return name;
     }
 
     public void setName(String name) {
-            this.name = name;
+        this.name = name;
     }
-    
+
     public String getEmail() {
-            return email;
+        return email;
     }
 
     public void setEmail(String email) {
-            this.email = email;
+        this.email = email;
     }
 }
