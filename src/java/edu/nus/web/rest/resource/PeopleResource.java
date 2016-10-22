@@ -14,6 +14,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
+
 /**
  *
  * @author swemon
@@ -26,7 +27,7 @@ public class PeopleResource {
     private PeopleBean peopleBean;
 
     @POST
-    public Response post(@FormParam("") String name, @FormParam("") String email) {
+    public Response post(@FormParam("name") String name, @FormParam("email") String email) {
         
         // TODO Implementation here
         System.out.print(">>> name " + name);

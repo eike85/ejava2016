@@ -24,6 +24,10 @@ public class PeopleBean {
    
     @PersistenceUnit EntityManagerFactory emf;
     
+    public PeopleBean() {
+        
+    }
+    
     public void save(People people) {
         EntityManager em = emf.createEntityManager();
         em.persist(people);
