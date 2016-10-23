@@ -6,11 +6,13 @@
 package edu.nus.web.rest.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -30,8 +32,27 @@ public class People implements Serializable {
     @Basic
     private String name;
     private String email;
+    
+    @OneToMany(mappedBy="people")
+    private Collection<Appointment> appointment;
 
     public People() {
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public Collection<Appointment> getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Collection<Appointment> appointment) {
+        this.appointment = appointment;
     }
 
     public String getPeopleId() {

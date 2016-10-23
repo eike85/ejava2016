@@ -4,7 +4,11 @@
  */
 package edu.nus.business.bean;
 
+import edu.nus.web.rest.entity.Appointment;
 import edu.nus.web.rest.entity.People;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
@@ -12,6 +16,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -39,5 +44,16 @@ public class PeopleBean {
         em.close();
         
         System.out.println("Saving finished");
+    }
+    public Collection<Appointment> findAllAppointments(String pid) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Appointment> query = em.createNamedQuery("Appointment.findByPeopleId", Appointment.class);
+        
+        query.setParameter("pid", pid);
+        List<Appointment> resultList = query.getResultList();
+        for (Appointment appointment : resultList) {
+            System.out.println(appointment);
+        }
+        return resultList;
     }
 }

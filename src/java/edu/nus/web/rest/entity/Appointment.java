@@ -11,21 +11,26 @@ import java.sql.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 /**
- *
+// *
  * @author NayLA
  */
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "Appointment.findAll", query = "SELECT a FROM Appointment a")
-        , @NamedQuery(name = "Appointment.findByAppointmentId", query = "SELECT a FROM Appointment a WHERE a.appt_id = :appt_id")
-	, @NamedQuery(name = "Appointment.findByDescription", query = "SELECT d FROM Appointment d WHERE d.description = :description")
-        , @NamedQuery(name = "Appointment.findByDate", query = "SELECT dt FROM Appointment dt WHERE dt.description = :description")
-        , @NamedQuery(name = "Appointment.findByPeopleId", query = "SELECT appt_pid FROM Appointment appt_pid WHERE appt_pid.pid = :pid")})
+//	@NamedQuery(name = "Appointment.findAll", query = "SELECT a FROM Appointment a")
+//        , @NamedQuery(name = "Appointment.findByAppointmentId", query = "SELECT a FROM Appointment a WHERE a.appt_id = :appt_id")
+//	, @NamedQuery(name = "Appointment.findByDescription", query = "SELECT d FROM Appointment d WHERE d.description = :description")
+//        , @NamedQuery(name = "Appointment.findByDate", query = "SELECT dt FROM Appointment dt WHERE dt.description = :description")
+//        , @NamedQuery(name = "Appointment.findByPeopleId", query = "SELECT appt_pid FROM Appointment appt_pid WHERE appt_pid.pid = :pid")
+         @NamedQuery(name = "Appointment.findByPeopleId", query = "select a from Appointment a inner join a.people p WHERE p.pid = :pid")})
+//, @NamedQuery(name = "Appointment.findByPeopleId", query = "SELECT a FROM Appointment a WHERE a.people.pid = :pid")})
 public class Appointment implements Serializable{
     
     private static final long serializableUID = 1L;
@@ -35,11 +40,17 @@ public class Appointment implements Serializable{
     
     @Basic private String description;
     private Date appt_date;
-    private Integer pid;
+    
+    @JoinColumn(name="pid", referencedColumnName = "pid")
+    @ManyToOne
+    private People people;
+
+    @Override
+    public String toString() {
+        return "Appointment{" + "appt_id=" + appt_id + ", description=" + description + ", appt_date=" + appt_date + ", people=" + people + '}';
+    }
     
     public Appointment(){
-        
-        
     }
 
     public Integer getAppt_id() {
@@ -66,12 +77,12 @@ public class Appointment implements Serializable{
         this.appt_date = appt_date;
     }
 
-    public Integer getPid() {
-        return pid;
+    public People getPeople() {
+        return people;
     }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }   
+    public void setPeople(People people) {
+        this.people = people;
+    }
       
 }
