@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.nus.web.rest.entity;
+package edu.nus.iss.ca.jpa.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -20,10 +20,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "People.findAll", query = "SELECT p FROM People p"),
-    @NamedQuery(name = "People.findByPeopleId", query = "SELECT p FROM People p WHERE p.pid = :pid"),
-    @NamedQuery(name = "People.findByName", query = "SELECT p FROM People p WHERE p.name = :name"),
-    @NamedQuery(name = "People.findByEmail", query = "SELECT p FROM People p WHERE p.email = :email")})
+         @NamedQuery(name = "People.findByEmail", query = "Select p from People p where p.email = :email")})
 public class People implements Serializable {
 
     private static final long serializableUID = 1L;
@@ -32,8 +29,7 @@ public class People implements Serializable {
     @Basic
     private String name;
     private String email;
-    
-    @OneToMany(mappedBy="people")
+    @OneToMany(mappedBy = "people")
     private Collection<Appointment> appointment;
 
     public People() {

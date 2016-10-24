@@ -2,14 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.nus.business.bean;
+package edu.nus.iss.ca.ejb.bean;
 
-import edu.nus.web.rest.entity.Appointment;
-import edu.nus.web.rest.entity.People;
+import edu.nus.iss.ca.exception.ApplicationCustomException;
+import edu.nus.iss.ca.jpa.entity.Appointment;
+import edu.nus.iss.ca.jpa.entity.People;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import javax.ejb.ApplicationException;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -33,16 +35,24 @@ public class PeopleBean {
     public PeopleBean() {
     }
 
-    public void save(People people) {
-
-        String uuid = UUID.randomUUID().toString().substring(0, 8);
-        people.setPeopleId(uuid);
-
+    public void save(People people) throws ApplicationCustomException {
+        
         EntityManager em = emf.createEntityManager();
-        em.persist(people);
+        
+        // Duplicate email check
+        TypedQuery<People> query = em.createNamedQuery("People.findByEmail", People.class);
+        query.setParameter("email", people.getEmail());
+        List<People> resultList = query.getResultList();
+        
+        if ( resultList.size() > 0 ) {
+            throw new ApplicationCustomException("Email is already used.");
+        } else {
+            people.setPeopleId(generatePeopleId());
+        
+            em.persist(people);
+            System.out.println("Saving finished");
+        }
         em.close();
-
-        System.out.println("Saving finished");
     }
 
     public Collection<Appointment> findAllAppointments(String email) {
@@ -60,7 +70,7 @@ public class PeopleBean {
     public Collection<People> findWithEmail(String email) {
 
         EntityManager em = emf.createEntityManager();
-        TypedQuery<People> query = em.createQuery("Select p from People p where p.email = :email", People.class);
+        TypedQuery<People> query = em.createNamedQuery("People.findByEmail", People.class);
 
         query.setParameter("email", email);
         List<People> resultList = query.getResultList();
@@ -68,5 +78,10 @@ public class PeopleBean {
             System.out.println("Person>>" + person);
         }
         return resultList;
+    }
+
+    private String generatePeopleId() {
+        // Create people id
+        return  UUID.randomUUID().toString().substring(0, 8);
     }
 }
