@@ -7,8 +7,6 @@ package edu.nus.iss.ca.web.rest.resource;
 import edu.nus.iss.ca.ejb.bean.PeopleBean;
 import edu.nus.iss.ca.jpa.entity.People;
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
@@ -25,6 +23,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import edu.nus.iss.ca.exception.ApplicationCustomException;
 import java.util.concurrent.ExecutorService;
+import javax.annotation.Resource;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 
@@ -40,7 +39,9 @@ public class PeopleResource {
   
     @EJB 
     private PeopleBean peopleBean;
-    private ExecutorService executorService = java.util.concurrent.Executors.newCachedThreadPool();
+    
+    @Resource(mappedName = "concurrent/myThreadPool")
+    private ExecutorService executorService;
 
     @POST
     public void create(@Suspended

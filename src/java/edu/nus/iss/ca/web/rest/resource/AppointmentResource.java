@@ -8,6 +8,7 @@ import edu.nus.iss.ca.ejb.bean.PeopleBean;
 import edu.nus.iss.ca.jpa.entity.Appointment;
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
@@ -32,7 +33,10 @@ public class AppointmentResource {
     
     @EJB 
     private PeopleBean peopleBean;
-    private ExecutorService executorService = java.util.concurrent.Executors.newCachedThreadPool();
+    
+    @Resource(mappedName = "concurrent/myThreadPool")
+    private ExecutorService executorService;
+    //private ExecutorService executorService = java.util.concurrent.Executors.newCachedThreadPool();
     
     @GET
     @Path("{email}")
