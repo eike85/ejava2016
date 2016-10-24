@@ -10,6 +10,8 @@ import java.sql.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,13 +31,14 @@ import javax.persistence.OneToOne;
 //	, @NamedQuery(name = "Appointment.findByDescription", query = "SELECT d FROM Appointment d WHERE d.description = :description")
 //        , @NamedQuery(name = "Appointment.findByDate", query = "SELECT dt FROM Appointment dt WHERE dt.description = :description")
 //        , @NamedQuery(name = "Appointment.findByPeopleId", query = "SELECT appt_pid FROM Appointment appt_pid WHERE appt_pid.pid = :pid")
-         @NamedQuery(name = "Appointment.findByPeopleId", query = "select a from Appointment a inner join a.people p WHERE p.pid = :pid")})
+         @NamedQuery(name = "Appointment.findByEmail", query = "select a from Appointment a inner join a.people p WHERE p.email = :email")})
 //, @NamedQuery(name = "Appointment.findByPeopleId", query = "SELECT a FROM Appointment a WHERE a.people.pid = :pid")})
 public class Appointment implements Serializable{
     
     private static final long serializableUID = 1L;
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer appt_id;
     
     @Basic private String description;

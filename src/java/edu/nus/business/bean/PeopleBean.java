@@ -27,32 +27,45 @@ public class PeopleBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-   
-    @PersistenceUnit EntityManagerFactory emf;
-    
+    @PersistenceUnit
+    EntityManagerFactory emf;
+
     public PeopleBean() {
-        
     }
-    
+
     public void save(People people) {
-        
-        String uuid = UUID.randomUUID().toString().substring(0,8);
+
+        String uuid = UUID.randomUUID().toString().substring(0, 8);
         people.setPeopleId(uuid);
-        
+
         EntityManager em = emf.createEntityManager();
         em.persist(people);
         em.close();
-        
+
         System.out.println("Saving finished");
     }
-    public Collection<Appointment> findAllAppointments(String pid) {
+
+    public Collection<Appointment> findAllAppointments(String email) {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Appointment> query = em.createNamedQuery("Appointment.findByPeopleId", Appointment.class);
-        
-        query.setParameter("pid", pid);
+        TypedQuery<Appointment> query = em.createNamedQuery("Appointment.findByEmail", Appointment.class);
+
+        query.setParameter("email", email);
         List<Appointment> resultList = query.getResultList();
         for (Appointment appointment : resultList) {
             System.out.println(appointment);
+        }
+        return resultList;
+    }
+
+    public Collection<People> findWithEmail(String email) {
+
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<People> query = em.createQuery("Select p from People p where p.email = :email", People.class);
+
+        query.setParameter("email", email);
+        List<People> resultList = query.getResultList();
+        for (People person : resultList) {
+            System.out.println("Person>>" + person);
         }
         return resultList;
     }

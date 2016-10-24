@@ -33,11 +33,11 @@ public class AppointmentResource {
     @EJB 
     private PeopleBean peopleBean;
     
-    @Path("{pid}")
+    @Path("{email}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAppointment(@PathParam("pid") String pid) {
-        Collection<Appointment> appointments = peopleBean.findAllAppointments(pid);
+    public Response getAppointment(@PathParam("email") String email) {
+        Collection<Appointment> appointments = peopleBean.findAllAppointments(email);
         
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         for (Appointment appointment : appointments) {
