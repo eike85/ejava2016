@@ -1,9 +1,13 @@
 package ejava.week04.web;
 
+import ejava.week04.bean.NoteBean;
+import ejava.week04.entity.Users;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 @Named
 public class LoginView implements Serializable {
 
+    @Inject
+    NoteBean noteBean;
 	private static final long serialVersionUID = 1L;
 
 	private String username;
@@ -47,6 +53,10 @@ public class LoginView implements Serializable {
 				.getRequest();
 
 		try {
+//                    Collection<Users> findAllUsers = noteBean.findAllUsers();
+//                    if (findAllUsers.size() > 0) {
+//                    System.out.println("Database connection successful");
+//                    }
 			req.login(username, password);
 		} catch (ServletException ex) {
 			FacesMessage msg = new FacesMessage("Incorrect login");
@@ -55,9 +65,6 @@ public class LoginView implements Serializable {
 			return ("");
 		}
 
-		return ("/secure/topsecret");
-
+		return ("/secure/menu");
 	}
-
-	
 }
