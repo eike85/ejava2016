@@ -29,6 +29,11 @@ public class Notes {
     
     private String userid;
     
+    public Notes(){
+        
+        
+    }
+    
     @Column(name = "posted_DateTime")
     private Date postedDateTime;
     public int getNoteId() {
