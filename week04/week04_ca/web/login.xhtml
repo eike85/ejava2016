@@ -11,10 +11,10 @@
 
 			<h:panelGrid columns="2">
 				Username:
-				<h:inputText value="#{loginView.username}"/>
+                                <h:inputText value="#{loginView.username}" required="true" requiredMessage="UserName is requried."/>
 
 				Password:
-				<h:inputSecret value="#{loginView.password}"/>
+                                <h:inputSecret value="#{loginView.password}" required="true" requiredMessage="Password is requried."/>
 
 				Attempted:
 				<h:outputText value="#{loginView.count}"/>

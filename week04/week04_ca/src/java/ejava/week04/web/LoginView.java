@@ -61,31 +61,31 @@ public class LoginView implements Serializable {
                         .getExternalContext()
                         .getRequest();
         try {
-            Collection<Users> findAllUsers = noteBean.findAllUsers();
-            if (findAllUsers.size() > 0) {
-            System.out.println("Database connection successful");
-            }
-                req.login(username, password);
+          req.login(username, password);
+          return ("/secure/menu");
         } catch (ServletException ex) {
                 FacesMessage msg = new FacesMessage("Incorrect login");
                 count++;
                 FacesContext.getCurrentInstance().addMessage(null, msg);
                 return ("");
         }
-        return ("/secure/menu");
     }
     
     public String register() {
         Users user = new Users();
         user.setUserid(username);
         user.setPassword(password);
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
             userBean.createUser(user);
+            System.out.println("Registration Successful");
+            context.addMessage(null, new FacesMessage("Registration Successful. Please login."));
+            return null;
         } catch (UserExistedException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return ("/secure/menu");
+            
+            context.addMessage(null, new FacesMessage("User Already existed"));
+            return null;
+        } 
     }
 }
