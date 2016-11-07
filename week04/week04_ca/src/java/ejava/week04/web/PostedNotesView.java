@@ -116,7 +116,7 @@ public class PostedNotesView implements Serializable {
             
             System.out.println(note.getTitle()+"\r\n");
             System.out.println(note.getPostedDateTime()+"\r\n");
-            System.out.println(note.getUserid()+"\r\n");
+            System.out.println(note.getUsers().getUserid()+"\r\n");
             System.out.println(note.getCategory()+"\r\n");
             System.out.println(note.getContent()+"\r\n");
         }
