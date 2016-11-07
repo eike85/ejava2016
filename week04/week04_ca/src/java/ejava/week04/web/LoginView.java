@@ -22,9 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 @ViewScoped
 @Named
 public class LoginView implements Serializable {
-
-    @Inject
-    NoteBean noteBean;
     
     @Inject
     UserBean userBean;

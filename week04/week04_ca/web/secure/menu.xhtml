@@ -18,6 +18,12 @@ and open the template in the editor.
 	    <div id="header">
                 <div>
                     <h:form>
+                        logged in as <h:outputLabel value="#{menuView.userName}"></h:outputLabel>
+                        <h:commandButton value="Log Out" action="#{menuView.loggedOut()}"/>
+                    </h:form>
+                </div>
+                <div>
+                    <h:form>
                         <h:link value="Create New Note" outcome="/secure/createNote" style="padding-right: 10px;"/>                
                         <h:link value="Posted Notes" outcome="/secure/postedNotes" />
                     </h:form>
