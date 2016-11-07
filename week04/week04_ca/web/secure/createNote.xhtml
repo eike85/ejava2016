@@ -12,6 +12,7 @@ and open the template in the editor.
         <ui:composition template="/secure/menu.xhtml">
              <ui:define name="content">
 	 	  <h2>Create Note</h2>
+<<<<<<< HEAD
                   <h:panelGrid columns="2">
                     Title:
                     <h:inputText value="#{createNoteView.title}"></h:inputText>
@@ -26,6 +27,38 @@ and open the template in the editor.
                     <f:selectItems value="#{createNoteView.favYear2Value}" />
                   </h:panelGrid>
              </ui:define>
+=======
+                  
+                <h:form>
+                    Note ID:
+                    <input type="text" name="Title" value="#{createNoteView.noteId}"/><br></br>
+                    
+                    Title:
+                    <input type="text" name="Title" value="#{createNoteView.title}"/><br></br>
+                                       
+                    Category:
+                    <input type="text" name="Category" value="#{createNoteView.category}"/><br></br>
+                   
+                    Content:
+                    <input type="text" name="Content" value="#{createNoteView.content}"/><br></br>
+                    
+                    User ID:
+                    <input type="text" name="Content" value="#{createNoteView.userid}"/><br></br>
+                    
+                    Posted Date and Time:
+                    <input type="text" name="Content" value="#{createNoteView.posted_datetime}"/><br></br>
+                    
+                    <h:commandButton value="submit" action="#{createNoteView.createNewNote()}">
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                    
+                </h:form>
+                  
+             </ui:define>           
+>>>>>>> branch 'master' of https://github.com/eike85/ejava2016.git
         </ui:composition>
+        
+        
+        
     </h:body>
 </html>

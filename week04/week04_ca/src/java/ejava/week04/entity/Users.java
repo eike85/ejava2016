@@ -15,6 +15,15 @@ import javax.persistence.Id;
 @Entity
 public class Users implements Serializable {
 
+    @Id
+    String userid;  
+    String password;
+    
+    public Users(){
+        
+        
+    }
+    
     public String getUserid() {
         return userid;
     }
@@ -23,11 +32,6 @@ public class Users implements Serializable {
         this.userid = userid;
     }
     
-    @Id
-    String userid;
-    
-    String password;
-
     public String getPassword() {
         return password;
     }
