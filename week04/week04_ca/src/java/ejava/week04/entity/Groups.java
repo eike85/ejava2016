@@ -8,8 +8,10 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
@@ -31,6 +33,7 @@ public class Groups implements Serializable {
     
     // one to one relationship with Users/userid
     @ManyToOne
+    @PrimaryKeyJoinColumn(name ="userId", referencedColumnName="userid")
     private Users users;
 
     @Override

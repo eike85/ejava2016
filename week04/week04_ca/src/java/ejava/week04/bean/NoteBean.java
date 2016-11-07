@@ -32,6 +32,9 @@ public class NoteBean {
     @Inject
     private UserSession userSession;
     
+    @Inject
+    private UserBean userBean;
+    
     public Collection<Users> findAllUsers() {
 
         // TODO remove on final submit
@@ -54,7 +57,7 @@ public class NoteBean {
         System.out.println("Login User Name" + userSession.getUsername());
         
         String userName = userSession.getUsername();
-        Users user = findUserById(userName);
+        Users user = userBean.findUserById(userName);
         note.setUsers(user);
         java.util.Date date = new java.util.Date();
         note.setPostedDateTime(new java.sql.Date(date.getTime()));
@@ -62,22 +65,6 @@ public class NoteBean {
         
         em.close();
         System.out.println("New note created! ");
-    }
-    
-    public Users findUserById(String userId) {
-        
-        EntityManager em = emf.createEntityManager();
-        
-        TypedQuery<Users> query = em.createQuery("SELECT u FROM Users u where u.userid= :userid", Users.class);
-        query.setParameter("userid", userId);
-        List<Users> userList = query.getResultList();
-        
-        Users user = null;
-        if (userList.size() > 0) {
-            user =  userList.get(0);
-        }
-        em.close();
-        return user;
     }
         
     public Collection<Notes> findAllNotes() {

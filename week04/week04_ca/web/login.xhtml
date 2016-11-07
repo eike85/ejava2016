@@ -19,8 +19,10 @@
 				Attempted:
 				<h:outputText value="#{loginView.count}"/>
 
-				<h:panelGroup/>
-				<h:commandButton value="Login" action="#{loginView.login()}"/>
+                                <h:panelGroup>
+                                <h:commandButton value="Login" action="#{loginView.login()}"/>
+                                <h:commandButton value="Register" action="#{loginView.register()}"/>
+				</h:panelGroup>
 
 			</h:panelGrid>
 
