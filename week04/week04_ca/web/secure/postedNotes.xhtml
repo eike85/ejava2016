@@ -20,7 +20,7 @@ and open the template in the editor.
                         <h:dataTable  var="note" value="#{postedNotesView.getPostedNotes()}" 
                                       styleClass="postedNotesView-table" bgcolor="Yellow"
                                   headerClass="postedNotesView-table-header"  
-                                  rowClasses="postedNotesView-table-odd-row,postedNotesView-table-even-row"
+                                  rowClasses="postedNotesView-table-odd-row,postedNotesView-table-even-row" border="1"
                                   >
 
                          <h:column><f:facet name="header">Title</f:facet>#{note.title}</h:column>
