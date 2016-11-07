@@ -6,11 +6,25 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:body>
         <ui:composition template="/secure/menu.xhtml">
              <ui:define name="content">
 	 	  <h2>Create Note</h2>
+                  <h:panelGrid columns="2">
+                    Title:
+                    <h:inputText value="#{createNoteView.title}"></h:inputText>
+                    Category
+                    <h:selectOneListbox value="#{createNoteView.categories}"> 
+                        <f:selectItem itemValue="2000" itemLabel="Year1 - 2000" />
+                        <f:selectItem itemValue="2010" itemLabel="Year1 - 2010" />
+                        <f:selectItem itemValue="2020" itemLabel="Year1 - 2020" />
+                    </h:selectOneListbox>
+                    Content:
+                    <h:inputTextarea value="#{createNoteView.content}"> </h:inputTextarea>
+                    <f:selectItems value="#{createNoteView.favYear2Value}" />
+                  </h:panelGrid>
              </ui:define>
         </ui:composition>
     </h:body>
