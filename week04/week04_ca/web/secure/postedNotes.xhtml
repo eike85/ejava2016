@@ -17,7 +17,7 @@ and open the template in the editor.
                                    
                   <h:form> 
                      
-                        <h:dataTable  var="note" value="#{postedNotesView.getNoteList()}" 
+                        <h:dataTable  var="note" value="#{postedNotesView.getPostedNotes()}" 
                                       styleClass="postedNotesView-table" bgcolor="Yellow"
                                   headerClass="postedNotesView-table-header"  
                                   rowClasses="postedNotesView-table-odd-row,postedNotesView-table-even-row"
@@ -27,7 +27,7 @@ and open the template in the editor.
 
                          <h:column><f:facet name="header">Posted Data and Time</f:facet>#{note.postedDateTime}</h:column>
 
-                         <h:column><f:facet name="header">User ID</f:facet>#{note.userid}</h:column>
+                         <h:column><f:facet name="header">User ID</f:facet>#{note.users.userid}</h:column>
 
                          <h:column><f:facet name="header">Category</f:facet>#{note.category}</h:column>
 
@@ -39,7 +39,5 @@ and open the template in the editor.
                                                                                                         
              </ui:define>
         </ui:composition>
-        
-        
     </h:body>
 </html>
