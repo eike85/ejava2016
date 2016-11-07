@@ -17,11 +17,10 @@ and open the template in the editor.
 
 	    <div id="header">
                 <div>
-                    <!-- <h:link value="Create Note" outcome="/secure/createNote" style="padding-right: 10px;"/> -->                   
-                    <!-- <h:link value="Posted Notes" outcome="/secure/postedNotes" /> -->
-                    
-                    <h:form> <h:commandLink value="Create Notes" action="#{createNoteView.insertNewNote()}" /> </h:form>
-                    <h:form> <h:commandLink value="Posted Notes" action="#{postedNotesView.getPostedNotes()}" /> </h:form>
+                    <h:form>
+                        <h:link value="Create New Note" outcome="/secure/createNote" style="padding-right: 10px;"/>                
+                        <h:link value="Posted Notes" outcome="/secure/postedNotes" />
+                    </h:form>
                                        
                 </div>
 	    </div>

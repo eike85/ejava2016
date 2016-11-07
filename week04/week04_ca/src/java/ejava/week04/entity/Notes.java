@@ -4,10 +4,13 @@
  */
 package ejava.week04.entity;
 
+
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -15,7 +18,6 @@ import javax.persistence.Id;
  */
 @Entity
 public class Notes {
-
     
     @Column(name = "note_id")
     @Id
@@ -27,19 +29,19 @@ public class Notes {
     
     private String content;
     
-    private String userid;
-    
-    public Notes(){
-        
-        
-    }
+    @ManyToOne
+    @JoinColumn(name ="userid", referencedColumnName="userid")
+    private Users users;
     
     @Column(name = "posted_DateTime")
     private Date postedDateTime;
+     
+    public Notes(){
+    }
+    
     public int getNoteId() {
         return noteId;
     }
-
     public void setNoteId(int noteId) {
         this.noteId = noteId;
     }
@@ -47,7 +49,6 @@ public class Notes {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -55,7 +56,6 @@ public class Notes {
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
@@ -63,23 +63,20 @@ public class Notes {
     public String getContent() {
         return content;
     }
-
     public void setContent(String content) {
         this.content = content;
     }
-
-    public String getUserid() {
-        return userid;
+    
+    public Users getUsers() {
+        return users;
     }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public Date getPostedDateTime() {
         return postedDateTime;
     }
-
     public void setPostedDateTime(Date postedDateTime) {
         this.postedDateTime = postedDateTime;
     }

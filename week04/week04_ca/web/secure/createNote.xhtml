@@ -12,50 +12,29 @@ and open the template in the editor.
         <ui:composition template="/secure/menu.xhtml">
              <ui:define name="content">
 	 	  <h2>Create Note</h2>
-<<<<<<< HEAD
-                  <h:panelGrid columns="2">
-                    Title:
-                    <h:inputText value="#{createNoteView.title}"></h:inputText>
-                    Category
-                    <h:selectOneListbox value="#{createNoteView.categories}"> 
-                        <f:selectItem itemValue="2000" itemLabel="Year1 - 2000" />
-                        <f:selectItem itemValue="2010" itemLabel="Year1 - 2010" />
-                        <f:selectItem itemValue="2020" itemLabel="Year1 - 2020" />
-                    </h:selectOneListbox>
-                    Content:
-                    <h:inputTextarea value="#{createNoteView.content}"> </h:inputTextarea>
-                    <f:selectItems value="#{createNoteView.favYear2Value}" />
-                  </h:panelGrid>
-             </ui:define>
-=======
                   
                 <h:form>
-                    Note ID:
-                    <input type="text" name="Title" value="#{createNoteView.noteId}"/><br></br>
-                    
-                    Title:
-                    <input type="text" name="Title" value="#{createNoteView.title}"/><br></br>
+                    <h:panelGrid columns="2">
+                             Title:
+                             <h:inputText value="#{createNoteView.title}"></h:inputText>
                                        
-                    Category:
-                    <input type="text" name="Category" value="#{createNoteView.category}"/><br></br>
+                            Category:
+                            <h:selectOneMenu  value="#{createNoteView.category}"> 
+                                <f:selectItem itemValue="Social" itemLabel="Social" />
+                                <f:selectItem itemValue="For Sale" itemLabel="For Sale" />
+                                <f:selectItem itemValue="Jobs" itemLabel="Jobs"/>
+                                <f:selectItem itemValue="Tuition" itemLabel="Tuition"/>
+                            </h:selectOneMenu>
                    
-                    Content:
-                    <input type="text" name="Content" value="#{createNoteView.content}"/><br></br>
-                    
-                    User ID:
-                    <input type="text" name="Content" value="#{createNoteView.userid}"/><br></br>
-                    
-                    Posted Date and Time:
-                    <input type="text" name="Content" value="#{createNoteView.posted_datetime}"/><br></br>
-                    
-                    <h:commandButton value="submit" action="#{createNoteView.createNewNote()}">
-                        <f:ajax execute="@form" render="@form" />
-                    </h:commandButton>
-                    
+                            Content:
+                            <h:inputTextarea value="#{createNoteView.content}"></h:inputTextarea>
+                                        
+                            <h:commandButton value="Create" action="#{createNoteView.createNewNote()}"></h:commandButton>
+                    </h:panelGrid>
                 </h:form>
                   
              </ui:define>           
->>>>>>> branch 'master' of https://github.com/eike85/ejava2016.git
+
         </ui:composition>
         
         

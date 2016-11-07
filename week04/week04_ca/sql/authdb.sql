@@ -23,15 +23,15 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS notes;
 CREATE TABLE notes (
-  note_id int(11) NOT NULL,
+  note_id int(11) NOT NULL AUTO_INCREMENT,
   title varchar(80) NOT NULL,
   category varchar(40) NOT NULL,
   content varchar(200) DEFAULT NULL,
   userid varchar(32) NOT NULL,
   posted_datetime datetime NOT NULL,
   PRIMARY KEY (note_id),
-  KEY fk_note_user (userid),
-  CONSTRAINT fk_note_user FOREIGN KEY (userid) REFERENCES users (userid)
+  KEY userid_userid (userid),
+  CONSTRAINT userid_userid FOREIGN KEY (userid) REFERENCES users (userid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
