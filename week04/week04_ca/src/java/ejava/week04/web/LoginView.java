@@ -1,6 +1,7 @@
 package ejava.week04.web;
 
 import ejava.week04.bean.NoteBean;
+import ejava.week04.bean.SocketSession;
 import ejava.week04.bean.UserBean;
 
 import ejava.week04.entity.Users;
@@ -25,6 +26,9 @@ public class LoginView implements Serializable {
     
     @Inject
     UserBean userBean;
+    
+    @Inject
+    SocketSession socketSession;
     
     private static final long serialVersionUID = 1L;
 
@@ -53,6 +57,11 @@ public class LoginView implements Serializable {
             this.count = count;
     }
     
+    public String testSocket() {
+        System.out.println("Sending userName: " + username + " from Socket");
+        socketSession.broadcast(username);
+        return null;
+    }
     public String login() {
         HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance()
                         .getExternalContext()
