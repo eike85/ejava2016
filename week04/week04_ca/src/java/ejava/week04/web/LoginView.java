@@ -57,11 +57,6 @@ public class LoginView implements Serializable {
             this.count = count;
     }
     
-    public String testSocket() {
-        System.out.println("Sending userName: " + username + " from Socket");
-        socketSession.broadcast(username);
-        return null;
-    }
     public String login() {
         HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance()
                         .getExternalContext()

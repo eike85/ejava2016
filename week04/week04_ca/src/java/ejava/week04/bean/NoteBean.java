@@ -9,6 +9,7 @@ import ejava.week04.entity.Users;
 import ejava.week04.web.CreateNoteView;
 import ejava.week04.web.UserSession;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
@@ -31,6 +32,9 @@ public class NoteBean {
     
     @Inject
     private UserSession userSession;
+    
+    @Inject
+    SocketSession socketSession;
     
     @Inject
     private UserBean userBean;
@@ -64,6 +68,10 @@ public class NoteBean {
         em.persist(note);
         
         em.close();
+        
+        Collection<Notes> notes = new ArrayList();
+        notes.add(note);
+        socketSession.broadcast(notes);
         System.out.println("New note created! ");
     }
         

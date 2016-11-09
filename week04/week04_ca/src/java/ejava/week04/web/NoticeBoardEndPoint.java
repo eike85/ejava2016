@@ -4,8 +4,11 @@
  */
 package ejava.week04.web;
 
+import ejava.week04.bean.NoteBean;
 import ejava.week04.bean.SocketSession;
+import ejava.week04.entity.Notes;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -26,6 +29,9 @@ public class NoticeBoardEndPoint {
     @Inject
     SocketSession socketSession;
     
+    @Inject
+    NoteBean noteBean;
+    
     @OnOpen
     public void open(Session sess) {
         socketSession.add(sess);
@@ -33,7 +39,10 @@ public class NoticeBoardEndPoint {
     }
 
     @OnMessage
-    public void message(String text) {
-       socketSession.broadcast(text);
+    public void handleMessage(String message, Session session) {
+        
+        System.out.println(">>>Server Received Message: " + message);
+        Collection<Notes> allNotes = noteBean.findAllNotes();
+        socketSession.broadcast(allNotes);
     }
 }
