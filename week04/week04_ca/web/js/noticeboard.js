@@ -7,7 +7,7 @@ $(function() {
     var socket;
     
     var filerByCategory = function() {
-        $("#location tbody").remove();
+        $("#location").find("tr:gt(0)").remove();
         var trHTML = '';
         $.each(notes, function (i, item) {
             var filterCatgory = $('#selectId').val();
