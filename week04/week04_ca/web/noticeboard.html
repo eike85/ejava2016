@@ -13,13 +13,26 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <div>Notice Board</div> 
-        
-            <button type="button" id="connect" title="Connect" >Click Me to Connect!</button>
+        <h1>Notice Board</h1> 
+        <form>
+            <select name="categoryDropDown" id="selectId" >
+                <option value="Social">Social</option>
+                <option value="For Sale">For Sale</option>
+                <option value="Jobs">Jobs</option>
+                <option value="Tuition">Tuition</option>
+                <option value="All" selected>All</option>
+            </select>
+            <button type="submit" id="submit">Find</button>
             <button type="button" id="all" >All Notes</button>
-            <table>
-                <tr></tr>
+            <table id="location" border='1'>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Content</th>
+                    <th>User ID</th>
+                    <th>DateTime</th>
+                </tr>
             </table>
-        
+        </form>
     </body>
 </html>
