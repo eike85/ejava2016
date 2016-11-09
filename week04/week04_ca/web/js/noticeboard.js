@@ -7,7 +7,7 @@ $(function() {
     var socket;
     
     var filerByCategory = function() {
-        $("#location tr").remove();
+        $("#location tbody").remove();
         var trHTML = '';
         $.each(notes, function (i, item) {
             var filterCatgory = $('#selectId').val();
@@ -25,7 +25,7 @@ $(function() {
            socket = new WebSocket("ws://localhost:8080/week04_ca/board");
            socket.onopen = function() {
                console.log("Connected");
-               
+               socket.send("All");
            };
            socket.onclose =  function() {
             console.log("Disconnected");
@@ -53,11 +53,6 @@ $(function() {
                 filerByCategory();
            };
        }
-    
-    $( "#all" ).on("click", function(){
-        socket.send("All");
-        console.log("Sending all");
-    });
     
     $('#selectId').on('change', function() {
         console.log(this.value);
