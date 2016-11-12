@@ -108,7 +108,7 @@ public class ProcessDeliveryTask implements Runnable {
 				.add("pod", teamId + "/" + imgPath.toFile().getName())
 				.build();
 
-		sessions.readMutex(() -> {
+		sessions.readMutex(() -> { 
 			sessions.broadcast(data);
 		});
 	}
