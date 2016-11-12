@@ -26,10 +26,12 @@ public class CallbackRest {
     private DeliveryBean deliveryBean;
     
     @GET
-    public Response updateAckId(@QueryParam("podId") String podId, @QueryParam("ackId") String ackId) {
+    public Response updateAckId(@QueryParam("podId") int podId, @QueryParam("ackId") int ackId) {
     
         System.out.println(">>PodId " + podId);
         System.out.println(">>AckId " + ackId);
+        
+        deliveryBean.updateAckId(podId, ackId);
         return Response.ok().build();
     }
 }
