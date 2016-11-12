@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="EpodApp">
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+
+		<script src="epod.js"></script>
+
+	</head>
+	<body ng-controller="EpodCtrl as epodCtrl">
+
+		<div class="container">
+
+			<h1>EPODs</h1>
+
+			<div class="panel panel-warning" ng-repeat="e in epodCtrl.epods">
+				<div class="panel-heading">
+					<h2>Team: {{ e.teamId }}</h2>
+				</div>
+				<div class="panel-body">
+					<img ng-src="image/{{ e.pod }}" class="img-thumbnail pull-left" style="width:256px">
+					<p class="well-lg pull-right" style="font-size: 1.8em;">
+						EPOD id: <code>{{ e.epodId }}</code><br>
+						Acknowledgement id: <code>{{ e.ackId }}</code><br>
+						Note: <span style="font-family: monospace">{{ e.note }}</span>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
