@@ -7,18 +7,22 @@ package service;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 /**
  *
  * @author swemon
  */
-@javax.ws.rs.ApplicationPath("/api")
+@javax.ws.rs.ApplicationPath("/")
 public class ApplicationConfig extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
         addRestResourceClasses(resources);
+        
+         // Add additional features such as support for Multipart.
+        resources.add(MultiPartFeature.class);
         return resources;
     }
 
@@ -29,7 +33,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(service.CallbackRest.class);
         resources.add(service.DeliveryRest.class);
+        resources.add(service.UploadRest.class);
     }
     
 }

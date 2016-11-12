@@ -26,7 +26,7 @@ public class ProofOfDelivery {
     
     private String note;
     
-    private String image;
+    private byte[] image;
     
     @Column(name = "delivery_date")
     private Date deliveryDate;
@@ -62,11 +62,11 @@ public class ProofOfDelivery {
         this.note = note;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
@@ -86,5 +86,9 @@ public class ProofOfDelivery {
         this.ackId = ackId;
     }
     
+    @Override
+    public String toString() {
+        return "ProofOfDelivery{" + "podId=" + podId + ", note=" + note + ", image=" + image + ", deliveryDate=" + deliveryDate + ", ackId=" + ackId + '}';
+    }
  
 }

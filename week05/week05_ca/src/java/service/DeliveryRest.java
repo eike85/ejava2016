@@ -28,7 +28,7 @@ import javax.ws.rs.core.Response;
  */
 
 @RequestScoped
-@Path("/item")
+@Path("/api/items")
 public class DeliveryRest {
      
     @EJB
@@ -36,7 +36,7 @@ public class DeliveryRest {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAppointment() {
+    public Response getDeliveryDetails() {
         
         List<Delivery> allDelivery = deliveryBean.getAllDelivery();
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
