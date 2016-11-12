@@ -28,7 +28,7 @@ import javax.ws.rs.core.Response;
  */
 
 @RequestScoped
-@Path("/api/item")
+@Path("/item")
 public class DeliveryRest {
      
     @EJB

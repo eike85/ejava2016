@@ -28,16 +28,19 @@ public class Delivery implements Serializable {
     private String name;
     
     private String address;
-
-    @Override
-    public String toString() {
-        return "Delivery{" + "pkgId=" + pkgId + ", name=" + name + ", address=" + address + ", phone=" + phone + ", createDate=" + createDate + ", proofOfDelivery=" + proofOfDelivery + '}';
-    }
     
     private String phone;
     
     @Column(name = "create_Date")
     private Date createDate;
+    
+    @OneToOne(mappedBy = "delivery")
+    private ProofOfDelivery proofOfDelivery;
+    
+    @Override
+    public String toString() {
+        return "Delivery{" + "pkgId=" + pkgId + ", name=" + name + ", address=" + address + ", phone=" + phone + ", createDate=" + createDate + ", proofOfDelivery=" + proofOfDelivery + '}';
+    }
 
     public ProofOfDelivery getProofOfDelivery() {
         return proofOfDelivery;
@@ -46,9 +49,6 @@ public class Delivery implements Serializable {
     public void setProofOfDelivery(ProofOfDelivery proofOfDelivery) {
         this.proofOfDelivery = proofOfDelivery;
     }
-    
-    @OneToOne(mappedBy = "delivery")
-    private ProofOfDelivery proofOfDelivery;
 
     public int getPkgId() {
         return pkgId;

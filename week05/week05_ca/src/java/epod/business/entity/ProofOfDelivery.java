@@ -17,15 +17,12 @@ import javax.persistence.OneToOne;
  *
  * @author swemon
  */
-@Entity
+@Entity(name = "pod")
 public class ProofOfDelivery {
     
     @Id
     @Column(name = "pod_Id")
     private int podId;
-    
-    @Column(name = "pkg_id")
-    private int pkgId;
     
     private String note;
     
@@ -38,7 +35,7 @@ public class ProofOfDelivery {
     private int ackId;
     
     @OneToOne
-    @JoinColumn(name = "pkgId", referencedColumnName = "pkgId")
+    @JoinColumn(name = "pkg_Id", referencedColumnName = "pkg_Id")
     private Delivery delivery;
 
     public int getPodId() {
@@ -55,14 +52,6 @@ public class ProofOfDelivery {
 
     public void setPodId(int podId) {
         this.podId = podId;
-    }
-
-    public int getPkgId() {
-        return pkgId;
-    }
-
-    public void setPkgId(int pkgId) {
-        this.pkgId = pkgId;
     }
 
     public String getNote() {
