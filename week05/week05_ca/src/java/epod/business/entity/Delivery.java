@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+
 /**
  *
  * @author swemon
@@ -27,6 +28,11 @@ public class Delivery implements Serializable {
     private String name;
     
     private String address;
+
+    @Override
+    public String toString() {
+        return "Delivery{" + "pkgId=" + pkgId + ", name=" + name + ", address=" + address + ", phone=" + phone + ", createDate=" + createDate + ", proofOfDelivery=" + proofOfDelivery + '}';
+    }
     
     private String phone;
     
