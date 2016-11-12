@@ -60,5 +60,4 @@ public class DeliveryBean {
         existingPod.setAckId(podId);
         em.persist(existingPod);
     }
-    
 }
