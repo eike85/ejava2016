@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    
+    <h:head>
+        <title>Enter Customer Details</title>
+    </h:head>
+    <h:body style="background-color:bisque;">
+               
+        <h2>Delivery Registration</h2>
+        
+        <h:form>
+        <h:panelGrid columns="2">
+                      
+            Package ID: 
+            <h:inputText value="#{deliveryDetailEntryView.pkg_id}" /><br/> <!-- Take value which is keyed into the input text box of registration form, -->
+            Name: 
+            <h:inputText value="#{deliveryDetailEntryView.name}" /><br/> 
+            Address: 
+            <h:inputText value="#{deliveryDetailEntryView.address}" /><br/>
+            Phone: 
+            <h:inputText value="#{deliveryDetailEntryView.phone}" /><br/>
+            
+            
+
+            
+            <h:panelGroup>
+            <h:commandButton id="submit" value="Enter Details" action="#{deliveryDetailEntryView.enterDetails()}"></h:commandButton>
+            </h:panelGroup>
+                         
+        </h:panelGrid>  
+        </h:form>
+    </h:body>
+</html>
+

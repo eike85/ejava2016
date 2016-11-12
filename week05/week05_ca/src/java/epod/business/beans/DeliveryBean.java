@@ -7,6 +7,7 @@ package epod.business.beans;
 
 import epod.business.entity.Delivery;
 import epod.business.entity.ProofOfDelivery;
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -60,4 +61,20 @@ public class DeliveryBean {
         existingPod.setAckId(podId);
         em.persist(existingPod);
     }
+	
+	public Delivery enterDeliveryDetails(int id,String name,String ph,String Addr){
+                       
+        Delivery d = new Delivery();
+               
+        d.setPkgId(id);
+        d.setName(name);
+        d.setPhone(ph);
+        d.setAddress(Addr);
+        //d.setCreateDate(date);
+       
+        em.persist(d);
+        
+        return d;
+    }
+      
 }
