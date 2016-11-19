@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package epod.business.beans;
+package epod.business.ejb;
 
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;

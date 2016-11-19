@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package service;
+package epod.web;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -33,9 +28,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(service.CallbackRest.class);
-        resources.add(service.DeliveryRest.class);
-        resources.add(service.UploadRest.class);
+        resources.add(service.endPoints.CallbackEndPoint.class);
+        resources.add(service.endPoints.DeliveryEndPoint.class);
+        resources.add(service.endPoints.UploadEndPoint.class);
     }
     
 }

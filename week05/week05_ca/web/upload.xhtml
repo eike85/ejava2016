@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+		<h1>File Upload</h1>
+
+		<form method="POST" action="http://localhost:8080/ca3/upload" enctype="multipart/form-data">
+
+			<table>
+				<tr>
+					<td>Team id:</td>
+					<td>
+						<input type="text" name="teamId" size="30"/>
+					</td>
+				</tr>
+				<tr>
+					<td>POD id:</td>
+					<td>
+						<input type="number" name="podId" size="30"/>
+					</td>
+				</tr>
+				<tr>
+					<td>Callback</td>
+					<td>
+						<input type="text" name="callback" size="80"/>
+					</td>
+				</tr>
+				<tr>
+					<td>Image file:</td>
+					<td>
+						<input type="file" name="image" accept="image/*" size="30"/>
+					</td>
+				</tr>
+				<tr>
+					<td>Note:</td>
+					<td>
+						<input type="text" name="note" size="30" placeholder="Message"/>
+					</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td> <button type="submit">Upload</button> </td>
+				</tr>
+
+			</table>
+
+		</form>
+	</body>
+</html>

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package service.endPoints;
 
-import epod.business.beans.DeliveryBean;
+import epod.business.ejb.DeliveryBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
  */
 @RequestScoped
 @Path("/callback")
-public class CallbackRest {
+public class CallbackEndPoint {
     @EJB
     private DeliveryBean deliveryBean;
     
